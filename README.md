@@ -1,0 +1,1 @@
+# devops-stack-module-oidc-aws-cognito
