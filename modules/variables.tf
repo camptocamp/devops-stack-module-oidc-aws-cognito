@@ -19,11 +19,6 @@ variable "namespace" {
   default = "cert-manager"
 }
 
-variable "profiles" {
-  type    = list(string)
-  default = ["default"]
-}
-
 #######################
 ## Module variables
 #######################
