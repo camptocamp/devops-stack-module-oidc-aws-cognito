@@ -16,7 +16,7 @@ resource "aws_cognito_user_pool_domain" "pool_domain" {
 }
 
 module "oidc" {
-  source = "git::https://github.com/camptocamp/devops-stack-module-oidc-aws-cognito.git//modules"
+  source = "git::https://github.com/camptocamp/devops-stack-module-oidc-aws-cognito.git/"
 
   cluster_name     = var.cluster_name
   argocd_namespace = module.cluster.argocd_namespace
