@@ -19,6 +19,12 @@ variable "namespace" {
   default = "cert-manager"
 }
 
+variable "dependency_ids" {
+  type = map(string)
+
+  default = {}
+}
+
 #######################
 ## Module variables
 #######################

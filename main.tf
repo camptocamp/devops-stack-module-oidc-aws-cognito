@@ -1,3 +1,7 @@
+resource "null_resource" "dependencies" {
+  triggers = var.dependency_ids
+}
+
 data "aws_region" "current" {}
 
 resource "aws_cognito_user_pool_client" "client" {
@@ -31,3 +35,8 @@ resource "aws_cognito_user_pool_client" "client" {
   ]
 }
 
+resource "null_resource" "this" {
+  depends_on = [
+    resource.aws_cognito_user_pool_client.client,
+  ]
+}
