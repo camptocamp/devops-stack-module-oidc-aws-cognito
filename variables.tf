@@ -16,7 +16,7 @@ variable "argocd_namespace" {
 
 variable "namespace" {
   type    = string
-  default = "cert-manager"
+  default = "default"
 }
 
 variable "dependency_ids" {
