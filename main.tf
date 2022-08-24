@@ -31,6 +31,8 @@ resource "aws_cognito_user_pool_client" "client" {
     format("https://argocd.apps.%s.%s/auth/callback", var.cluster_name, var.base_domain),
     format("https://grafana.apps.%s.%s/login/generic_oauth", var.cluster_name, var.base_domain),
     format("https://prometheus.apps.%s.%s/oauth2/callback", var.cluster_name, var.base_domain),
+    format("https://thanos-query.apps.%s.%s/oauth2/callback", var.cluster_name, var.base_domain),
+    format("https://thanos-bucketweb.apps.%s.%s/oauth2/callback", var.cluster_name, var.base_domain),
     format("https://alertmanager.apps.%s.%s/oauth2/callback", var.cluster_name, var.base_domain),
   ]
 }
