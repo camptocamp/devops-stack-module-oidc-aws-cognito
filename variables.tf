@@ -3,25 +3,18 @@
 #######################
 
 variable "cluster_name" {
+  description = "Name given to the cluster. Value used for the ingress' URL of the application."
   type = string
 }
 
 variable "base_domain" {
+  description = "Base domain of the cluster. Value used for the ingress of ."
   type = string
-}
-
-variable "argocd_namespace" {
-  type = string
-}
-
-variable "namespace" {
-  type    = string
-  default = "default"
 }
 
 variable "dependency_ids" {
+  description = "IDs of the other modules on which this module depends on."
   type = map(string)
-
   default = {}
 }
 
@@ -37,4 +30,8 @@ variable "cognito_user_pool_id" {
 variable "cognito_user_pool_domain" {
   description = "Domain prefix of the Cognito user pool to use (custom domain currently not supported!)."
   type        = string
+}
+
+variable "callback_urls" {
+  
 }
