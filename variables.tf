@@ -46,12 +46,6 @@ variable "callback_urls" {
   default     = []
 }
 
-variable "create_default_user" {
-  description = "Boolean to activate the creation of a default user with administrative privileges, mainly for testing purposes."
-  type        = bool
-  default     = false
-}
-
 variable "user_map" {
   description = "List of users to be added to the default admin group. Note that all fields are mandatory. These users will be given a temporary password on their invitation e-mail, so the address needs to be valid."
   type = map(object({

@@ -37,36 +37,6 @@ resource "aws_cognito_user_group" "devops_stack_admin_group" {
   ]
 }
 
-resource "random_password" "devops_stack_admin_password" {
-  count = var.create_default_user ? 1 : 0
-
-  length = 32
-}
-
-resource "aws_cognito_user" "devops_stack_admin" {
-  count = var.create_default_user ? 1 : 0
-
-  user_pool_id   = local.cognito_user_pool_id
-  message_action = "SUPPRESS"
-
-  username = "devopsadmin"
-  password = resource.random_password.devops_stack_admin_password[0].result
-  attributes = {
-    given_name     = "Administrator"
-    family_name    = "DevOps Stack"
-    email          = "devopsadmin@devops-stack.io"
-    email_verified = true
-  }
-}
-
-resource "aws_cognito_user_in_group" "devops_stack_admin" {
-  count = var.create_default_user ? 1 : 0
-
-  user_pool_id = local.cognito_user_pool_id
-  group_name   = resource.aws_cognito_user_group.devops_stack_admin_group.name
-  username     = resource.aws_cognito_user.devops_stack_admin[0].username
-}
-
 resource "aws_cognito_user" "devops_stack_users" {
   for_each = var.user_map
 
