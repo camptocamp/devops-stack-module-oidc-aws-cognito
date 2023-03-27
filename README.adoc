@@ -186,7 +186,7 @@ Default: `[]`
 
 ==== [[input_cognito_user_pool_domain]] <<input_cognito_user_pool_domain,cognito_user_pool_domain>>
 
-Description: Domain prefix of the Cognito user pool to use (custom domain currently not supported!). If not provided, the module will create its own pool and get its domain.
+Description: Domain prefix of the Cognito user pool to use (custom domain currently not supported!). If the variable `create_pool` is activated, the module will create its own pool and this variable will not be used.
 
 Type: `string`
 
@@ -194,7 +194,7 @@ Default: `null`
 
 ==== [[input_cognito_user_pool_id]] <<input_cognito_user_pool_id,cognito_user_pool_id>>
 
-Description: ID of the Cognito user pool to use. If not provided, the module will create its own pool where to put the remaining created resources.
+Description: ID of the Cognito user pool to use. If the variable `create_pool` is activated, the module will create its own pool and this variable will not be used.
 
 Type: `string`
 
@@ -202,7 +202,7 @@ Default: `null`
 
 ==== [[input_create_pool]] <<input_create_pool,create_pool>>
 
-Description: Boolean to activate the creation of the pool. If set as true you'll cannot pass specify the variables `cognito_user_pool_id` and `cognito_user_pool_domain`.
+Description: Boolean to activate the creation of the pool. If set as true you cannot specify the variables `cognito_user_pool_id` and `cognito_user_pool_domain`.
 
 Type: `bool`
 
@@ -236,6 +236,10 @@ Default: `{}`
 === Outputs
 
 The following outputs are exported:
+
+==== [[output_cognito_user_pool_id]] <<output_cognito_user_pool_id,cognito_user_pool_id>>
+
+Description: ID of the Cognito user pool. It will either be the ID of the pool created by this module or simply the ID that was given to the variable `cognito_user_pool_id`.
 
 ==== [[output_devops_stack_admins]] <<output_devops_stack_admins,devops_stack_admins>>
 
@@ -314,19 +318,19 @@ Description: Object containing multiple OIDC configuration values.
 |yes
 
 |[[input_cognito_user_pool_domain]] <<input_cognito_user_pool_domain,cognito_user_pool_domain>>
-|Domain prefix of the Cognito user pool to use (custom domain currently not supported!). If not provided, the module will create its own pool and get its domain.
+|Domain prefix of the Cognito user pool to use (custom domain currently not supported!). If the variable `create_pool` is activated, the module will create its own pool and this variable will not be used.
 |`string`
 |`null`
 |no
 
 |[[input_cognito_user_pool_id]] <<input_cognito_user_pool_id,cognito_user_pool_id>>
-|ID of the Cognito user pool to use. If not provided, the module will create its own pool where to put the remaining created resources.
+|ID of the Cognito user pool to use. If the variable `create_pool` is activated, the module will create its own pool and this variable will not be used.
 |`string`
 |`null`
 |no
 
 |[[input_create_pool]] <<input_create_pool,create_pool>>
-|Boolean to activate the creation of the pool. If set as true you'll cannot pass specify the variables `cognito_user_pool_id` and `cognito_user_pool_domain`.
+|Boolean to activate the creation of the pool. If set as true you cannot specify the variables `cognito_user_pool_id` and `cognito_user_pool_domain`.
 |`bool`
 |`false`
 |no
@@ -361,6 +365,7 @@ map(object({
 [cols="a,a",options="header,autowidth"]
 |===
 |Name |Description
+|[[output_cognito_user_pool_id]] <<output_cognito_user_pool_id,cognito_user_pool_id>> |ID of the Cognito user pool. It will either be the ID of the pool created by this module or simply the ID that was given to the variable `cognito_user_pool_id`.
 |[[output_devops_stack_admins]] <<output_devops_stack_admins,devops_stack_admins>> |Map containing the usernames and e-mails of the created users from `var.user_map`.
 |[[output_id]] <<output_id,id>> |ID to pass other modules in order to refer to this module as a dependency.
 |[[output_oidc]] <<output_oidc,oidc>> |Object containing multiple OIDC configuration values.
