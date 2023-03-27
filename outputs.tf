@@ -14,3 +14,8 @@ output "devops_stack_admins" {
   value       = var.user_map != {} ? { for key, value in var.user_map : value.username => value.email } : {}
   sensitive   = true
 }
+
+output "cognito_user_pool_id" {
+  description = "ID of the Cognito user pool. It will either be the ID of the pool created by this module or simply the ID that was given to the variable `cognito_user_pool_id`."
+  value       = local.cognito_user_pool_id
+}

@@ -23,19 +23,19 @@ variable "dependency_ids" {
 #######################
 
 variable "create_pool" {
-  description = "Boolean to activate the creation of the pool. If set as true you'll cannot pass specify the variables `cognito_user_pool_id` and `cognito_user_pool_domain`."
+  description = "Boolean to activate the creation of the pool. If set as true you cannot specify the variables `cognito_user_pool_id` and `cognito_user_pool_domain`."
   type        = bool
   default     = false
 }
 
 variable "cognito_user_pool_id" {
-  description = "ID of the Cognito user pool to use. If not provided, the module will create its own pool where to put the remaining created resources."
+  description = "ID of the Cognito user pool to use. If the variable `create_pool` is activated, the module will create its own pool and this variable will not be used."
   type        = string
   default     = null
 }
 
 variable "cognito_user_pool_domain" {
-  description = "Domain prefix of the Cognito user pool to use (custom domain currently not supported!). If not provided, the module will create its own pool and get its domain."
+  description = "Domain prefix of the Cognito user pool to use (custom domain currently not supported!). If the variable `create_pool` is activated, the module will create its own pool and this variable will not be used."
   type        = string
   default     = null
 }
