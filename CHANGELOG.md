@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0](https://github.com/camptocamp/devops-stack-module-oidc-aws-cognito/compare/v1.0.0-alpha.1...v1.0.0) (2023-03-27)
+
+
+### Features
+
+* add improvements and documentation ([#5](https://github.com/camptocamp/devops-stack-module-oidc-aws-cognito/issues/5)) ([28276e8](https://github.com/camptocamp/devops-stack-module-oidc-aws-cognito/commit/28276e84fe5ad9f08f7ef0ed4ad4e24e6e8247c7))
+
 ## 1.0.0-alpha.1 (2022-11-18)
 
 
