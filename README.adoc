@@ -138,9 +138,9 @@ The following requirements are needed by this module:
 
 The following providers are used by this module:
 
-- [[provider_aws]] <<provider_aws,aws>> (>= 4)
-
 - [[provider_null]] <<provider_null,null>> (>= 3)
+
+- [[provider_aws]] <<provider_aws,aws>> (>= 4)
 
 === Resources
 
@@ -160,15 +160,15 @@ The following resources are used by this module:
 
 The following input variables are required:
 
-==== [[input_base_domain]] <<input_base_domain,base_domain>>
-
-Description: Base domain of the cluster. Value used for the ingress of .
-
-Type: `string`
-
 ==== [[input_cluster_name]] <<input_cluster_name,cluster_name>>
 
 Description: Name given to the cluster. Value used for the ingress' URL of the application.
+
+Type: `string`
+
+==== [[input_base_domain]] <<input_base_domain,base_domain>>
+
+Description: Base domain of the cluster. Value used for the ingress of .
 
 Type: `string`
 
@@ -176,29 +176,13 @@ Type: `string`
 
 The following input variables are optional (have default values):
 
-==== [[input_callback_urls]] <<input_callback_urls,callback_urls>>
+==== [[input_dependency_ids]] <<input_dependency_ids,dependency_ids>>
 
-Description: List of URLs where the authentication server is allowed to return during the authentication flow. Will be concatenated with the default URLs pertaining to the DevOps Stack.
+Description: IDs of the other modules on which this module depends on.
 
-Type: `list(string)`
+Type: `map(string)`
 
-Default: `[]`
-
-==== [[input_cognito_user_pool_domain]] <<input_cognito_user_pool_domain,cognito_user_pool_domain>>
-
-Description: Domain prefix of the Cognito user pool to use (custom domain currently not supported!). If the variable `create_pool` is activated, the module will create its own pool and this variable will not be used.
-
-Type: `string`
-
-Default: `null`
-
-==== [[input_cognito_user_pool_id]] <<input_cognito_user_pool_id,cognito_user_pool_id>>
-
-Description: ID of the Cognito user pool to use. If the variable `create_pool` is activated, the module will create its own pool and this variable will not be used.
-
-Type: `string`
-
-Default: `null`
+Default: `{}`
 
 ==== [[input_create_pool]] <<input_create_pool,create_pool>>
 
@@ -208,13 +192,29 @@ Type: `bool`
 
 Default: `false`
 
-==== [[input_dependency_ids]] <<input_dependency_ids,dependency_ids>>
+==== [[input_cognito_user_pool_id]] <<input_cognito_user_pool_id,cognito_user_pool_id>>
 
-Description: IDs of the other modules on which this module depends on.
+Description: ID of the Cognito user pool to use. If the variable `create_pool` is activated, the module will create its own pool and this variable will not be used.
 
-Type: `map(string)`
+Type: `string`
 
-Default: `{}`
+Default: `null`
+
+==== [[input_cognito_user_pool_domain]] <<input_cognito_user_pool_domain,cognito_user_pool_domain>>
+
+Description: Domain prefix of the Cognito user pool to use (custom domain currently not supported!). If the variable `create_pool` is activated, the module will create its own pool and this variable will not be used.
+
+Type: `string`
+
+Default: `null`
+
+==== [[input_callback_urls]] <<input_callback_urls,callback_urls>>
+
+Description: List of URLs where the authentication server is allowed to return during the authentication flow. Will be concatenated with the default URLs pertaining to the DevOps Stack.
+
+Type: `list(string)`
+
+Default: `[]`
 
 ==== [[input_user_map]] <<input_user_map,user_map>>
 
@@ -237,14 +237,6 @@ Default: `{}`
 
 The following outputs are exported:
 
-==== [[output_cognito_user_pool_id]] <<output_cognito_user_pool_id,cognito_user_pool_id>>
-
-Description: ID of the Cognito user pool. It will either be the ID of the pool created by this module or simply the ID that was given to the variable `cognito_user_pool_id`.
-
-==== [[output_devops_stack_admins]] <<output_devops_stack_admins,devops_stack_admins>>
-
-Description: Map containing the usernames and e-mails of the created users from `var.user_map`.
-
 ==== [[output_id]] <<output_id,id>>
 
 Description: ID to pass other modules in order to refer to this module as a dependency.
@@ -252,6 +244,14 @@ Description: ID to pass other modules in order to refer to this module as a depe
 ==== [[output_oidc]] <<output_oidc,oidc>>
 
 Description: Object containing multiple OIDC configuration values.
+
+==== [[output_devops_stack_admins]] <<output_devops_stack_admins,devops_stack_admins>>
+
+Description: Map containing the usernames and e-mails of the created users from `var.user_map`.
+
+==== [[output_cognito_user_pool_id]] <<output_cognito_user_pool_id,cognito_user_pool_id>>
+
+Description: ID of the Cognito user pool. It will either be the ID of the pool created by this module or simply the ID that was given to the variable `cognito_user_pool_id`.
 // END_TF_DOCS
 
 === Reference in table format 
@@ -274,8 +274,8 @@ Description: Object containing multiple OIDC configuration values.
 [cols="a,a",options="header,autowidth"]
 |===
 |Name |Version
-|[[provider_aws]] <<provider_aws,aws>> |>= 4
 |[[provider_null]] <<provider_null,null>> |>= 3
+|[[provider_aws]] <<provider_aws,aws>> |>= 4
 |===
 
 = Resources
@@ -299,34 +299,22 @@ Description: Object containing multiple OIDC configuration values.
 [cols="a,a,a,a,a",options="header,autowidth"]
 |===
 |Name |Description |Type |Default |Required
-|[[input_base_domain]] <<input_base_domain,base_domain>>
-|Base domain of the cluster. Value used for the ingress of .
-|`string`
-|n/a
-|yes
-
-|[[input_callback_urls]] <<input_callback_urls,callback_urls>>
-|List of URLs where the authentication server is allowed to return during the authentication flow. Will be concatenated with the default URLs pertaining to the DevOps Stack.
-|`list(string)`
-|`[]`
-|no
-
 |[[input_cluster_name]] <<input_cluster_name,cluster_name>>
 |Name given to the cluster. Value used for the ingress' URL of the application.
 |`string`
 |n/a
 |yes
 
-|[[input_cognito_user_pool_domain]] <<input_cognito_user_pool_domain,cognito_user_pool_domain>>
-|Domain prefix of the Cognito user pool to use (custom domain currently not supported!). If the variable `create_pool` is activated, the module will create its own pool and this variable will not be used.
+|[[input_base_domain]] <<input_base_domain,base_domain>>
+|Base domain of the cluster. Value used for the ingress of .
 |`string`
-|`null`
-|no
+|n/a
+|yes
 
-|[[input_cognito_user_pool_id]] <<input_cognito_user_pool_id,cognito_user_pool_id>>
-|ID of the Cognito user pool to use. If the variable `create_pool` is activated, the module will create its own pool and this variable will not be used.
-|`string`
-|`null`
+|[[input_dependency_ids]] <<input_dependency_ids,dependency_ids>>
+|IDs of the other modules on which this module depends on.
+|`map(string)`
+|`{}`
 |no
 
 |[[input_create_pool]] <<input_create_pool,create_pool>>
@@ -335,10 +323,22 @@ Description: Object containing multiple OIDC configuration values.
 |`false`
 |no
 
-|[[input_dependency_ids]] <<input_dependency_ids,dependency_ids>>
-|IDs of the other modules on which this module depends on.
-|`map(string)`
-|`{}`
+|[[input_cognito_user_pool_id]] <<input_cognito_user_pool_id,cognito_user_pool_id>>
+|ID of the Cognito user pool to use. If the variable `create_pool` is activated, the module will create its own pool and this variable will not be used.
+|`string`
+|`null`
+|no
+
+|[[input_cognito_user_pool_domain]] <<input_cognito_user_pool_domain,cognito_user_pool_domain>>
+|Domain prefix of the Cognito user pool to use (custom domain currently not supported!). If the variable `create_pool` is activated, the module will create its own pool and this variable will not be used.
+|`string`
+|`null`
+|no
+
+|[[input_callback_urls]] <<input_callback_urls,callback_urls>>
+|List of URLs where the authentication server is allowed to return during the authentication flow. Will be concatenated with the default URLs pertaining to the DevOps Stack.
+|`list(string)`
+|`[]`
 |no
 
 |[[input_user_map]] <<input_user_map,user_map>>
@@ -365,10 +365,10 @@ map(object({
 [cols="a,a",options="header,autowidth"]
 |===
 |Name |Description
-|[[output_cognito_user_pool_id]] <<output_cognito_user_pool_id,cognito_user_pool_id>> |ID of the Cognito user pool. It will either be the ID of the pool created by this module or simply the ID that was given to the variable `cognito_user_pool_id`.
-|[[output_devops_stack_admins]] <<output_devops_stack_admins,devops_stack_admins>> |Map containing the usernames and e-mails of the created users from `var.user_map`.
 |[[output_id]] <<output_id,id>> |ID to pass other modules in order to refer to this module as a dependency.
 |[[output_oidc]] <<output_oidc,oidc>> |Object containing multiple OIDC configuration values.
+|[[output_devops_stack_admins]] <<output_devops_stack_admins,devops_stack_admins>> |Map containing the usernames and e-mails of the created users from `var.user_map`.
+|[[output_cognito_user_pool_id]] <<output_cognito_user_pool_id,cognito_user_pool_id>> |ID of the Cognito user pool. It will either be the ID of the pool created by this module or simply the ID that was given to the variable `cognito_user_pool_id`.
 |===
 // END_TF_TABLES
 ====
