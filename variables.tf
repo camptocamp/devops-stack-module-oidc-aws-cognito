@@ -51,8 +51,8 @@ variable "user_map" {
   type = map(object({
     username   = string
     email      = string
-    first_name = optional(string)
-    last_name  = optional(string)
+    first_name = string
+    last_name  = string
   }))
   default = {}
 }

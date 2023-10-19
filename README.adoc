@@ -226,8 +226,8 @@ Type:
 map(object({
     username   = string
     email      = string
-    first_name = optional(string)
-    last_name  = optional(string)
+    first_name = string
+    last_name  = string
   }))
 ----
 
@@ -350,8 +350,8 @@ Description: ID of the Cognito user pool. It will either be the ID of the pool c
 map(object({
     username   = string
     email      = string
-    first_name = optional(string)
-    last_name  = optional(string)
+    first_name = string
+    last_name  = string
   }))
 ----
 
