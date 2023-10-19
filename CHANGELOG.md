@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/camptocamp/devops-stack-module-oidc-aws-cognito/compare/v1.0.0...v1.0.1) (2023-10-19)
+
+
+### Bug Fixes
+
+* remove optional from variable used to create users ([#8](https://github.com/camptocamp/devops-stack-module-oidc-aws-cognito/issues/8)) ([a01ff4f](https://github.com/camptocamp/devops-stack-module-oidc-aws-cognito/commit/a01ff4ff18dea37d77757cf4904441df5bb94003))
+
 ## [1.0.0](https://github.com/camptocamp/devops-stack-module-oidc-aws-cognito/compare/v1.0.0-alpha.1...v1.0.0) (2023-03-27)
 
 
