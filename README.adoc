@@ -176,6 +176,14 @@ Type: `string`
 
 The following input variables are optional (have default values):
 
+==== [[input_subdomain]] <<input_subdomain,subdomain>>
+
+Description: Sub domain of the cluster. Value used for the ingress' URL of the application.
+
+Type: `string`
+
+Default: `"apps"`
+
 ==== [[input_dependency_ids]] <<input_dependency_ids,dependency_ids>>
 
 Description: IDs of the other modules on which this module depends on.
@@ -310,6 +318,12 @@ Description: ID of the Cognito user pool. It will either be the ID of the pool c
 |`string`
 |n/a
 |yes
+
+|[[input_subdomain]] <<input_subdomain,subdomain>>
+|Sub domain of the cluster. Value used for the ingress' URL of the application.
+|`string`
+|`"apps"`
+|no
 
 |[[input_dependency_ids]] <<input_dependency_ids,dependency_ids>>
 |IDs of the other modules on which this module depends on.
