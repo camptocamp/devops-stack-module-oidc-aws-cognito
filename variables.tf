@@ -12,6 +12,12 @@ variable "base_domain" {
   type        = string
 }
 
+variable "subdomain" {
+  description = "Sub domain of the cluster. Value used for the ingress' URL of the application."
+  type        = string
+  default     = "apps"
+}
+
 variable "dependency_ids" {
   description = "IDs of the other modules on which this module depends on."
   type        = map(string)
