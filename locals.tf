@@ -5,12 +5,12 @@ locals {
 
   # TODO Discuss if we use a coalescelist() instead of the concat()
   callback_urls = distinct(concat([
-    format("https://argocd.apps.%s.%s/auth/callback", var.cluster_name, var.base_domain),
-    format("https://grafana.apps.%s.%s/login/generic_oauth", var.cluster_name, var.base_domain),
-    format("https://prometheus.apps.%s.%s/oauth2/callback", var.cluster_name, var.base_domain),
-    format("https://thanos-query.apps.%s.%s/oauth2/callback", var.cluster_name, var.base_domain),
-    format("https://thanos-bucketweb.apps.%s.%s/oauth2/callback", var.cluster_name, var.base_domain),
-    format("https://alertmanager.apps.%s.%s/oauth2/callback", var.cluster_name, var.base_domain),
+    format("https://argocd.%s.%s/auth/callback", trimprefix("${var.subdomain}.${var.cluster_name}", "."), var.base_domain),
+    format("https://grafana.%s.%s/login/generic_oauth", trimprefix("${var.subdomain}.${var.cluster_name}", "."), var.base_domain),
+    format("https://prometheus.%s.%s/oauth2/callback", trimprefix("${var.subdomain}.${var.cluster_name}", "."), var.base_domain),
+    format("https://thanos-query.%s.%s/oauth2/callback", trimprefix("${var.subdomain}.${var.cluster_name}", "."), var.base_domain),
+    format("https://thanos-bucketweb.%s.%s/oauth2/callback", trimprefix("${var.subdomain}.${var.cluster_name}", "."), var.base_domain),
+    format("https://alertmanager.%s.%s/oauth2/callback", trimprefix("${var.subdomain}.${var.cluster_name}", "."), var.base_domain),
   ], var.callback_urls))
 
   oidc = {
