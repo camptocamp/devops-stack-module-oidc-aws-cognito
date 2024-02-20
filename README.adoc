@@ -178,7 +178,7 @@ The following input variables are optional (have default values):
 
 ==== [[input_subdomain]] <<input_subdomain,subdomain>>
 
-Description: Sub domain of the cluster. Value used for the ingress' URL of the application.
+Description: Subdomain of the cluster. Value used for the ingress' URL of the application.
 
 Type: `string`
 
@@ -320,7 +320,7 @@ Description: ID of the Cognito user pool. It will either be the ID of the pool c
 |yes
 
 |[[input_subdomain]] <<input_subdomain,subdomain>>
-|Sub domain of the cluster. Value used for the ingress' URL of the application.
+|Subdomain of the cluster. Value used for the ingress' URL of the application.
 |`string`
 |`"apps"`
 |no
