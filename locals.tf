@@ -3,13 +3,18 @@ locals {
 
   cognito_user_pool_domain = var.create_pool ? resource.aws_cognito_user_pool_domain.devops_stack_user_pool_domain[0].domain : var.cognito_user_pool_domain
 
-  # TODO Discuss if we use a coalescelist() instead of the concat()
   callback_urls = distinct(concat([
+    format("https://argocd.%s/auth/callback", trimprefix("${var.subdomain}.${var.base_domain}", ".")),
     format("https://argocd.%s.%s/auth/callback", trimprefix("${var.subdomain}.${var.cluster_name}", "."), var.base_domain),
+    format("https://grafana.%s/login/generic_oauth", trimprefix("${var.subdomain}.${var.base_domain}", ".")),
     format("https://grafana.%s.%s/login/generic_oauth", trimprefix("${var.subdomain}.${var.cluster_name}", "."), var.base_domain),
+    format("https://prometheus.%s/oauth2/callback", trimprefix("${var.subdomain}.${var.base_domain}", ".")),
     format("https://prometheus.%s.%s/oauth2/callback", trimprefix("${var.subdomain}.${var.cluster_name}", "."), var.base_domain),
+    format("https://thanos-query.%s/oauth2/callback", trimprefix("${var.subdomain}.${var.base_domain}", ".")),
     format("https://thanos-query.%s.%s/oauth2/callback", trimprefix("${var.subdomain}.${var.cluster_name}", "."), var.base_domain),
+    format("https://thanos-bucketweb.%s/oauth2/callback", trimprefix("${var.subdomain}.${var.base_domain}", ".")),
     format("https://thanos-bucketweb.%s.%s/oauth2/callback", trimprefix("${var.subdomain}.${var.cluster_name}", "."), var.base_domain),
+    format("https://alertmanager.%s/oauth2/callback", trimprefix("${var.subdomain}.${var.base_domain}", ".")),
     format("https://alertmanager.%s.%s/oauth2/callback", trimprefix("${var.subdomain}.${var.cluster_name}", "."), var.base_domain),
   ], var.callback_urls))
 
