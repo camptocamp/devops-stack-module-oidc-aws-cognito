@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.1.0](https://github.com/camptocamp/devops-stack-module-oidc-aws-cognito/compare/v1.0.1...v1.1.0) (2024-02-23)
+
+
+### Features
+
+* add a subdomain variable ([70fb1ff](https://github.com/camptocamp/devops-stack-module-oidc-aws-cognito/commit/70fb1ff754bd96855aaba1a8c6f7b70fc9366564))
+* add callback URLs without cluster_name ([b0b70e7](https://github.com/camptocamp/devops-stack-module-oidc-aws-cognito/commit/b0b70e7ea260deac7977c80e5df1b75bae086c96))
+
+
+### Bug Fixes
+
+* make subdomain variable non-nullable ([d567d8c](https://github.com/camptocamp/devops-stack-module-oidc-aws-cognito/commit/d567d8c2d7e982dfee5d7d52c9902bd8dd92b911))
+
 ## [1.0.1](https://github.com/camptocamp/devops-stack-module-oidc-aws-cognito/compare/v1.0.0...v1.0.1) (2023-10-19)
 
 
