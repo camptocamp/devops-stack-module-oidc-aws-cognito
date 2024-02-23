@@ -282,8 +282,8 @@ Description: ID of the Cognito user pool. It will either be the ID of the pool c
 [cols="a,a",options="header,autowidth"]
 |===
 |Name |Version
-|[[provider_null]] <<provider_null,null>> |>= 3
 |[[provider_aws]] <<provider_aws,aws>> |>= 4
+|[[provider_null]] <<provider_null,null>> |>= 3
 |===
 
 = Resources
