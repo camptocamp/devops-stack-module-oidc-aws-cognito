@@ -11,6 +11,12 @@ resource "aws_cognito_user_pool" "devops_stack_user_pool" {
     allow_admin_create_user_only = true
   }
 
+  lifecycle {
+    ignore_changes = [
+      schema,
+    ]
+  }
+
   depends_on = [
     null_resource.dependencies,
   ]
