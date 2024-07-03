@@ -138,9 +138,9 @@ The following requirements are needed by this module:
 
 The following providers are used by this module:
 
-- [[provider_null]] <<provider_null,null>> (>= 3)
-
 - [[provider_aws]] <<provider_aws,aws>> (>= 4)
+
+- [[provider_null]] <<provider_null,null>> (>= 3)
 
 === Resources
 
