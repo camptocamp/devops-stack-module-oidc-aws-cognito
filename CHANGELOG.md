@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/camptocamp/devops-stack-module-oidc-aws-cognito/compare/v1.1.0...v1.1.1) (2024-08-14)
+
+
+### Bug Fixes
+
+* ignore any schema changes made on the remote side ([42937cf](https://github.com/camptocamp/devops-stack-module-oidc-aws-cognito/commit/42937cfed72e2a67c011e2100476e5a57459dc9d))
+
 ## [1.1.0](https://github.com/camptocamp/devops-stack-module-oidc-aws-cognito/compare/v1.0.1...v1.1.0) (2024-02-23)
 
 
